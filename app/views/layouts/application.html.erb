@@ -36,6 +36,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="p-2 mb-4 flex justify-end h-12 bg-gray-800 text-gray-200">
+      <% if user_signed_in? %>
+        <div>Signed in as: <%= current_user.email %></div>
+      <% end %>
+    </div>
+    <div class="px-8 py-4">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
