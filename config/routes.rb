@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get "pages/:name" => "pages#show"
 
-  root "notes#index"
+  root "pages#home"
 
   get "inertia-example", to: "inertia_example#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

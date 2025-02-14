@@ -4,6 +4,13 @@ import { createRoot } from 'react-dom/client'
 import '@shopify/polaris/build/esm/styles.css';
 import {AppProvider} from '@shopify/polaris';
 import enTranslations from '@shopify/polaris/locales/en.json';
+import Layout from '../layouts/test-layout.tsx';
+
+function getLayout(name) {
+  return name.startsWith('Public/') ?
+  undefined :
+  (page) => createElement(Layout, { children: page })
+}
 
 // Temporary type definition, until @inertiajs/react provides one
 type ResolvedComponent = {
@@ -21,7 +28,6 @@ createInertiaApp({
   //
   // see https://inertia-rails.netlify.app/guide/progress-indicators
   // progress: false,
-
   resolve: (name) => {
     const pages = import.meta.glob<ResolvedComponent>('../pages/**/*.tsx', {
       eager: true,
@@ -36,7 +42,7 @@ createInertiaApp({
     // see https://inertia-rails.netlify.app/guide/pages#default-layouts
     //
     // page.default.layout ||= (page) => createElement(Layout, null, page)
-
+    page.default.layout = getLayout(name)
     return page
   },
 

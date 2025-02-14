@@ -36,15 +36,18 @@
   </head>
 
   <body>
-    <div class="p-2 mb-4 flex justify-end h-12 bg-gray-800 text-gray-200">
-      <% if user_signed_in? %>
-        <div>Signed in as: <%= current_user.email %></div>
-      <% end %>
+    <div class="w-[100vw]">
+      <div class="p-2 flex justify-end h-12 border border-b-0 border-red-500">
+        <% if user_signed_in? %>
+          <div>Signed in as: <%= current_user.email %></div>
+        <% end %>
+      </div>
+      <div class="px-8 py-4 border border-b-0 border-red-500">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
     </div>
-    <div class="px-8 py-4">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+
+    <%= yield %>
   </body>
 </html>

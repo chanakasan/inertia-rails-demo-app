@@ -1,7 +1,7 @@
 import {Page, Card} from '@shopify/polaris';
 import { Link } from '@inertiajs/react'
 
-export default function PageExample() {
+export default function HomePage() {
   return (
     <Page
       fullWidth
